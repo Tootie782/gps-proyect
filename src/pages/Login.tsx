@@ -1,12 +1,20 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+type Role = 'admin-regional' | 'admin-local' | 'teacher' | 'student';
+
 export function Login() {
   const navigate = useNavigate();
-  const [role, setRole] = useState<'admin' | 'teacher' | 'student'>('admin');
+  const [role, setRole] = useState<Role>('admin-regional');
 
   const handleLogin = () => {
-    navigate(`/${role}`);
+    if (role === 'admin-local') {
+      navigate('/admin-local/1'); // Redirige a la escuela con ID 1
+    } else if (role === 'admin-regional') {
+      navigate('/admin-regional');
+    } else {
+      navigate(`/${role}`);
+    }
   };
 
   return (
@@ -28,19 +36,30 @@ export function Login() {
             className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
-          <fieldset className="mt-4">
-            <legend className="text-sm font-medium text-gray-600 mb-2">Tipo de usuario</legend>
-            <div className="flex flex-col space-y-2">
+          <fieldset className="border border-gray-300 p-4 rounded-lg">
+            <legend className="text-sm font-medium text-gray-600 px-2">Tipo de usuario</legend>
+            <div className="space-y-3">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="radio"
                   name="role"
-                  value="admin"
-                  checked={role === 'admin'}
-                  onChange={() => setRole('admin')}
+                  value="admin-regional"
+                  checked={role === 'admin-regional'}
+                  onChange={() => setRole('admin-regional')}
+                  className="accent-red-600"
+                />
+                Administrador Regional
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="radio"
+                  name="role"
+                  value="admin-local"
+                  checked={role === 'admin-local'}
+                  onChange={() => setRole('admin-local')}
                   className="accent-blue-600"
                 />
-                Administrador
+                Administrador de Escuela
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
