@@ -20,30 +20,41 @@ export function AppShell({
   role: Role;
 }) {
   const userName = roleNames[role] ?? 'Usuario';
-
   // ──────────────────────────────────────────────
-  // Sidebar state: collapsed by default on mobile
+  // Sidebar state: Initialize based on screen size
   // ──────────────────────────────────────────────
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 1024;
+    }
+    return false;
+  });
+  
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 1024; // Start collapsed on mobile, expanded on desktop
+    }
+    return true;
+  });
 
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth < 1024; // Tailwind lg breakpoint
+      const wasMobile = isMobile;
+      
       setIsMobile(mobile);
 
-      // Expand on desktop, collapse on mobile
-      if (mobile && !isSidebarCollapsed) setIsSidebarCollapsed(true);
-      if (!mobile && isSidebarCollapsed) setIsSidebarCollapsed(false);
+      // Only adjust sidebar state when switching between mobile/desktop
+      if (mobile !== wasMobile) {
+        setIsSidebarCollapsed(mobile); // Collapse on mobile, expand on desktop
+      }
     };
 
-    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [isSidebarCollapsed]);
+  }, [isMobile]);
 
   const toggleSidebar = () => setIsSidebarCollapsed((prev) => !prev);
-
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50">
       <Sidebar
@@ -53,7 +64,7 @@ export function AppShell({
         onToggle={toggleSidebar}
       />
 
-      <div className="flex-1 flex flex-col overflow-hidden transition-all duration-300">
+      <div className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${isMobile ? 'w-full' : ''}`}>
         <Topbar userName={userName} onToggleSidebar={toggleSidebar} />
 
         <main className="flex-1 overflow-hidden p-3 md:p-4 lg:p-6">

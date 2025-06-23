@@ -10,6 +10,7 @@ import {
   Menu,
 } from 'lucide-react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 type Role = 'admin' | 'admin-regional' | 'admin-local' | 'teacher' | 'student';
 
@@ -29,12 +30,18 @@ export function Sidebar({
   const navigate = useNavigate();
   const location = useLocation();
   const { schoolId } = useParams<{ schoolId: string }>();
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // Avoid animation on initial load
+  useEffect(() => {
+    const timer = setTimeout(() => setIsInitialized(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   /* ─────────────────────────────
    * Build menu by role
-   * ──────────────────────────── */
-  const buildMenu = (): {
-    icon: JSX.Element;
+   * ──────────────────────────── */  const buildMenu = (): {
+    icon: React.ReactElement;
     label: string;
     path: string;
   }[] => {
@@ -124,15 +131,14 @@ export function Sidebar({
       {/* Overlay para mobile */}
       {isMobile && !isCollapsed && (
         <div className="fixed inset-0 z-40 bg-black/50" onClick={onToggle} />
-      )}
-
-      {/* Sidebar */}
+      )}      {/* Sidebar */}
       <aside
         className={`
           ${isMobile ? 'fixed top-0 left-0 z-50' : 'relative'}
           ${isCollapsed ? (isMobile ? '-translate-x-full' : 'w-16') : 'w-64'}
           h-screen bg-white shadow-lg border-r border-gray-200
-          transition-all duration-300 ease-in-out flex flex-col
+          ${isInitialized ? 'transition-all duration-300 ease-in-out' : ''}
+          flex flex-col
         `}
       >
         {/* Header */}
