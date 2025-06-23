@@ -1,7 +1,17 @@
-import { Home, School, Users, UserCheck, BarChart2, BookOpenCheck, ChevronLeft, Menu } from 'lucide-react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import {
+  Home,
+  School,
+  Users,
+  UserCheck,
+  BarChart2,
+  BookOpenCheck,
+  BookCopy,
+  ChevronLeft,
+  Menu,
+} from 'lucide-react';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
-type Role = 'admin' | 'teacher' | 'student';
+type Role = 'admin' | 'admin-regional' | 'admin-local' | 'teacher' | 'student';
 
 interface SidebarProps {
   role: Role;
@@ -10,74 +20,130 @@ interface SidebarProps {
   isMobile: boolean;
 }
 
-export function Sidebar({ role, isCollapsed, onToggle, isMobile }: SidebarProps) {
+export function Sidebar({
+  role,
+  isCollapsed,
+  onToggle,
+  isMobile,
+}: SidebarProps) {
   const navigate = useNavigate();
   const location = useLocation();
-  
-  const common = [{ 
-    icon: <Home size={20} />, 
-    label: 'Dashboard', 
-    path: role === 'admin' ? '/admin' : role === 'teacher' ? '/teacher' : '/student'
-  }];
-  
-  const adminMenu = [
-    ...common,
-    { icon: <School size={20} />, label: 'Escuelas', path: '/admin/schools' },
-    { icon: <Users size={20} />, label: 'Docentes', path: '/admin/teachers' },
-    { icon: <UserCheck size={20} />, label: 'Estudiantes', path: '/admin/students' },
-    { icon: <BarChart2 size={20} />, label: 'Reportes', path: '/admin/reports' }
-  ];
-  
-  const teacherMenu = [
-    ...common,
-    { icon: <School size={20} />, label: 'Escuelas', path: '/teacher/schools' },
-    { icon: <UserCheck size={20} />, label: 'Estudiantes', path: '/teacher/students' },
-    { icon: <BarChart2 size={20} />, label: 'Reportes', path: '/teacher/reports' }
-  ];
-  
-  const studentMenu = [
-    ...common,
-    { icon: <BookOpenCheck size={20} />, label: 'Mis Materias', path: '/student/subjects' },
-    { icon: <BarChart2 size={20} />, label: 'Reportes', path: '/student/reports' }
-  ];
+  const { schoolId } = useParams<{ schoolId: string }>();
 
-  const menu = role === 'admin' ? adminMenu : role === 'teacher' ? teacherMenu : studentMenu;
-  const handleMenuClick = (path: string) => {
-    navigate(path);
-    // En mobile, cerrar sidebar después de navegar
-    if (isMobile && !isCollapsed) {
-      onToggle();
+  /* ─────────────────────────────
+   * Build menu by role
+   * ──────────────────────────── */
+  const buildMenu = (): {
+    icon: JSX.Element;
+    label: string;
+    path: string;
+  }[] => {
+    /* Dashboard path differs by role */
+    const dashboardPath =
+      role === 'admin'
+        ? '/admin'
+        : role === 'admin-regional'
+        ? '/admin-regional'
+        : role === 'admin-local'
+        ? `/admin-local/${schoolId}`
+        : role === 'teacher'
+        ? '/teacher'
+        : '/student';
+
+    const common = [{ icon: <Home size={20} />, label: 'Dashboard', path: dashboardPath }];
+
+    switch (role) {
+      /* Admin Ministerial (desarrollo) */
+      case 'admin':
+        return [
+          ...common,
+          { icon: <School size={20} />, label: 'Escuelas', path: '/admin/schools' },
+          { icon: <Users size={20} />, label: 'Docentes', path: '/admin/teachers' },
+          { icon: <UserCheck size={20} />, label: 'Estudiantes', path: '/admin/students' },
+          { icon: <BarChart2 size={20} />, label: 'Reportes', path: '/admin/reports' },
+        ];
+
+      /* Admin Regional */
+      case 'admin-regional':
+        return [
+          ...common,
+          { icon: <School size={20} />, label: 'Escuelas', path: '/admin-regional/schools' },
+          { icon: <Users size={20} />, label: 'Docentes', path: '/admin-regional/teachers' },
+          { icon: <UserCheck size={20} />, label: 'Estudiantes', path: '/admin-regional/students' },
+          { icon: <BarChart2 size={20} />, label: 'Reportes', path: '/admin-regional/reports' },
+        ];
+
+      /* Admin Local (una escuela) */
+      case 'admin-local':
+        if (!schoolId) return common; // Evita crash si aún no hay param
+        const base = `/admin-local/${schoolId}`;
+        return [
+          { icon: <School size={20} />, label: 'Mi Escuela', path: base },
+          { icon: <BookCopy size={20} />, label: 'Cursos', path: `${base}/courses` },
+          { icon: <Users size={20} />, label: 'Docentes', path: `${base}/teachers` },
+          { icon: <UserCheck size={20} />, label: 'Estudiantes', path: `${base}/students` },
+          { icon: <BarChart2 size={20} />, label: 'Reportes', path: `${base}/reports` },
+        ];
+
+      /* Docente */
+      case 'teacher':
+        return [
+          ...common,
+          { icon: <School size={20} />, label: 'Escuelas', path: '/teacher/schools' },
+          { icon: <UserCheck size={20} />, label: 'Estudiantes', path: '/teacher/students' },
+          { icon: <BarChart2 size={20} />, label: 'Reportes', path: '/teacher/reports' },
+        ];
+
+      /* Estudiante */
+      case 'student':
+        return [
+          ...common,
+          /* En develop ya existe la vista de materias → conservamos /student/subjects */
+          { icon: <BookOpenCheck size={20} />, label: 'Mis Materias', path: '/student/subjects' },
+          { icon: <BarChart2 size={20} />, label: 'Reportes', path: '/student/reports' },
+        ];
+
+      default:
+        return common;
     }
   };
+
+  const menu = buildMenu();
+
+  const handleMenuClick = (path: string) => {
+    navigate(path);
+    /* En mobile ciérralo tras navegar */
+    if (isMobile && !isCollapsed) onToggle();
+  };
+
+  /* ─────────────────────────────
+   * UI
+   * ──────────────────────────── */
   return (
     <>
       {/* Overlay para mobile */}
       {isMobile && !isCollapsed && (
-        <div 
-          className="fixed inset-0 bg-black/50 z-40"
-          onClick={onToggle}
-        />
+        <div className="fixed inset-0 z-40 bg-black/50" onClick={onToggle} />
       )}
-      
+
       {/* Sidebar */}
-      <aside className={`
-        ${isMobile ? 'fixed' : 'relative'} 
-        ${isCollapsed ? (isMobile ? '-translate-x-full' : 'w-16') : 'w-64'} 
-        ${isMobile ? 'z-50 left-0 top-0' : 'z-auto'}
-        bg-white shadow-lg h-screen transition-all duration-300 ease-in-out border-r border-gray-200
-        flex flex-col
-      `}>
+      <aside
+        className={`
+          ${isMobile ? 'fixed top-0 left-0 z-50' : 'relative'}
+          ${isCollapsed ? (isMobile ? '-translate-x-full' : 'w-16') : 'w-64'}
+          h-screen bg-white shadow-lg border-r border-gray-200
+          transition-all duration-300 ease-in-out flex flex-col
+        `}
+      >
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
+        <div className="flex items-center justify-between p-4 border-b border-gray-200">
           {!isCollapsed && (
-            <h2 className="text-xl font-semibold text-emerald-700">
-              EduConecta
-            </h2>
+            <h2 className="text-xl font-semibold text-emerald-700">EduConecta</h2>
           )}
           <button
             onClick={onToggle}
             className="p-2 rounded-lg hover:bg-gray-100 text-gray-600 hover:text-gray-800 transition-colors"
-            aria-label={isCollapsed ? 'Expandir sidebar' : 'Colapsar sidebar'}
+            aria-label={isCollapsed ? 'Expandir sidebar' : 'Colapsar sidebar'}
           >
             {isMobile ? (
               <ChevronLeft size={20} />
@@ -87,30 +153,31 @@ export function Sidebar({ role, isCollapsed, onToggle, isMobile }: SidebarProps)
               <ChevronLeft size={20} />
             )}
           </button>
-        </div>        {/* Navigation */}
-        <nav className="p-4 space-y-2 flex-1 overflow-y-auto">
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 overflow-y-auto p-4 space-y-2">
           {menu.map((item, idx) => {
             const isActive = location.pathname === item.path;
             return (
               <div
                 key={idx}
+                onClick={() => handleMenuClick(item.path)}
                 className={`
-                  flex items-center gap-3 p-3 rounded-lg text-gray-700 
-                  hover:bg-emerald-50 hover:text-emerald-700 
-                  transition-all cursor-pointer group
+                  group flex items-center gap-3 p-3 rounded-lg cursor-pointer
+                  transition-all
                   ${isCollapsed ? 'justify-center' : ''}
-                  ${isActive ? 'bg-emerald-100 text-emerald-700 border border-emerald-200' : ''}
+                  ${
+                    isActive
+                      ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+                      : 'text-gray-700 hover:bg-emerald-50 hover:text-emerald-700'
+                  }
                 `}
                 title={isCollapsed ? item.label : undefined}
-                onClick={() => handleMenuClick(item.path)}
               >
-                <div className="flex-shrink-0">
-                  {item.icon}
-                </div>
+                <div className="flex-shrink-0">{item.icon}</div>
                 {!isCollapsed && (
-                  <span className="text-sm font-medium transition-opacity duration-200">
-                    {item.label}
-                  </span>
+                  <span className="text-sm font-medium">{item.label}</span>
                 )}
               </div>
             );
@@ -119,12 +186,10 @@ export function Sidebar({ role, isCollapsed, onToggle, isMobile }: SidebarProps)
 
         {/* Footer info */}
         {!isCollapsed && (
-          <div className="p-4 flex-shrink-0">
-            <div className="p-3 bg-emerald-50 rounded-lg">
-              <div className="text-xs text-emerald-700">
-                <p className="font-medium">Modo Rural</p>
-                <p className="text-emerald-600">Sincronización automática</p>
-              </div>
+          <div className="p-4">
+            <div className="rounded-lg bg-emerald-50 p-3">
+              <p className="text-xs font-medium text-emerald-700">Modo Rural</p>
+              <p className="text-xs text-emerald-600">Sincronización automática</p>
             </div>
           </div>
         )}
