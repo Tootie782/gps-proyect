@@ -1,0 +1,253 @@
+[
+  {
+    "id": "1",
+    "name": "María José González",
+    "rut": "12.345.678-9",
+    "curso": "5°A",
+    "escuela": "Escuela Rural Los Aromos",
+    "docente": "María Contreras",
+    "asistencia": 89,
+    "progreso": 85,
+    "materias": [
+      {
+        "nombre": "Matemáticas",
+        "promedio": 6.2,
+        "asistencia": 92,
+        "profesor": "Prof. Ana Morales",
+        "aula": "Sala 1",
+        "descripcion": "Desarrollo de habilidades numéricas, resolución de problemas y pensamiento lógico matemático para 5° básico.",        "horario": [
+          {
+            "id": "mat-1",
+            "dia": "lunes",
+            "horaInicio": "08:30",
+            "horaFin": "10:00",
+            "tema": "Números y Operaciones",
+            "descripcion": "Trabajo con fracciones y decimales",
+            "tipo": "clase",
+            "estado": "completada"
+          },
+          {
+            "id": "mat-2",
+            "dia": "miercoles",
+            "horaInicio": "10:30",
+            "horaFin": "12:00",
+            "tema": "Geometría",
+            "descripcion": "Cálculo de perímetros y áreas",
+            "tipo": "clase",
+            "estado": "programada"
+          },
+          {
+            "id": "mat-3",
+            "dia": "viernes",
+            "horaInicio": "08:30",
+            "horaFin": "10:00",
+            "tema": "Resolución de Problemas",
+            "descripcion": "Aplicación práctica de conceptos matemáticos",
+            "tipo": "laboratorio",
+            "estado": "programada"
+          }
+        ],
+        "actividades": [
+          {
+            "id": "act-1",
+            "nombre": "Ejercicios de Fracciones",
+            "fecha": "2024-12-15",
+            "nota": 6.5,
+            "estado": "completada",
+            "tipo": "tarea",
+            "descripcion": "Resolución de ejercicios prácticos sobre fracciones propias e impropias",
+            "instrucciones": "Completar la guía de ejercicios páginas 45-48 del libro de matemáticas",
+            "fechaEntrega": "2024-12-15",
+            "peso": 15
+          },
+          {
+            "id": "act-2",
+            "nombre": "Prueba de Números Decimales",
+            "fecha": "2024-12-20",
+            "nota": null,
+            "estado": "pendiente",
+            "tipo": "prueba",
+            "descripcion": "Evaluación sobre operaciones con números decimales y conversión de fracciones",
+            "contenidos": [
+              "Lectura y escritura de números decimales",
+              "Suma y resta de decimales",
+              "Multiplicación de decimales por números naturales",
+              "Conversión entre fracciones y decimales"
+            ],
+            "instrucciones": "Estudiar capítulos 3 y 4 del libro. Repasar ejercicios de la guía práctica.",
+            "fechaEntrega": "2024-12-20",
+            "peso": 25
+          },
+          {
+            "id": "act-3",
+            "nombre": "Proyecto: Medidas en mi Casa",
+            "fecha": "2024-12-25",
+            "nota": null,
+            "estado": "pendiente",
+            "tipo": "proyecto",
+            "descripcion": "Medir diferentes elementos de la casa usando unidades de medida estándar",
+            "instrucciones": "Realizar mediciones de al menos 10 objetos diferentes y presentar en una tabla",
+            "fechaEntrega": "2024-12-25",
+            "peso": 20
+          }
+        ]
+      },
+      {
+        "nombre": "Lenguaje y Comunicación",
+        "promedio": 6.8,
+        "asistencia": 95,
+        "profesor": "Prof. Carlos Ruiz",
+        "aula": "Sala 2",
+        "descripcion": "Desarrollo de competencias comunicativas, comprensión lectora y expresión escrita.",        "horario": [
+          {
+            "id": "len-1",
+            "dia": "martes",
+            "horaInicio": "08:30",
+            "horaFin": "10:00",
+            "tema": "Comprensión Lectora",
+            "descripcion": "Análisis de textos narrativos y descriptivos",
+            "tipo": "clase",
+            "estado": "completada"
+          },
+          {
+            "id": "len-2",
+            "dia": "jueves",
+            "horaInicio": "10:30",
+            "horaFin": "12:00",
+            "tema": "Expresión Escrita",
+            "descripcion": "Redacción de textos informativos",
+            "tipo": "clase",
+            "estado": "programada"
+          },
+          {
+            "id": "len-3",
+            "dia": "viernes",
+            "horaInicio": "10:30",
+            "horaFin": "12:00",
+            "tema": "Ortografía y Gramática",
+            "descripcion": "Reglas ortográficas y estructuras gramaticales",
+            "tipo": "clase",
+            "estado": "programada"
+          }
+        ],
+        "actividades": [
+          {
+            "id": "act-4",
+            "nombre": "Comprensión Lectora - Fábula",
+            "fecha": "2024-12-14",
+            "nota": 7.0,
+            "estado": "completada",
+            "tipo": "tarea",
+            "descripcion": "Lectura y análisis de fábulas chilenas",
+            "instrucciones": "Leer las fábulas del libro páginas 20-35 y responder preguntas de comprensión",
+            "fechaEntrega": "2024-12-14",
+            "peso": 15
+          },
+          {
+            "id": "act-5",
+            "nombre": "Ensayo sobre la Naturaleza",
+            "fecha": "2024-12-21",
+            "nota": null,
+            "estado": "pendiente",
+            "tipo": "tarea",
+            "descripcion": "Redacción de un ensayo descriptivo sobre un elemento de la naturaleza local",
+            "instrucciones": "Escribir un ensayo de 200 palabras describiendo un paisaje o animal de la región",
+            "fechaEntrega": "2024-12-21",
+            "peso": 20
+          },
+          {
+            "id": "act-6",
+            "nombre": "Prueba de Gramática",
+            "fecha": "2024-12-23",
+            "nota": null,
+            "estado": "pendiente",
+            "tipo": "prueba",
+            "descripcion": "Evaluación sobre sustantivos, adjetivos y verbos",
+            "contenidos": [
+              "Clasificación de sustantivos",
+              "Concordancia entre sustantivos y adjetivos",
+              "Tiempos verbales básicos",
+              "Uso de mayúsculas y puntuación"
+            ],
+            "instrucciones": "Repasar apuntes de clases y realizar ejercicios del cuadernillo",
+            "fechaEntrega": "2024-12-23",
+            "peso": 30
+          }
+        ]
+      },
+      {
+        "nombre": "Ciencias Naturales",
+        "promedio": 6.5,
+        "asistencia": 88,
+        "profesor": "Prof. Laura Silva",
+        "aula": "Laboratorio",
+        "descripcion": "Exploración del mundo natural a través de experimentos y observación científica.",        "horario": [
+          {
+            "id": "cie-1",
+            "dia": "lunes",
+            "horaInicio": "10:30",
+            "horaFin": "12:00",
+            "tema": "Seres Vivos",
+            "descripcion": "Clasificación y características de plantas y animales",
+            "tipo": "clase",
+            "estado": "completada"
+          },
+          {
+            "id": "cie-2",
+            "dia": "miercoles",
+            "horaInicio": "14:00",
+            "horaFin": "15:30",
+            "tema": "Experimentos de Laboratorio",
+            "descripcion": "Práctica de experimentos científicos básicos",
+            "tipo": "laboratorio",
+            "estado": "programada"
+          },
+          {
+            "id": "cie-3",
+            "dia": "jueves",
+            "horaInicio": "14:00",
+            "horaFin": "15:30",
+            "tema": "El Cuerpo Humano",
+            "descripcion": "Sistemas del cuerpo humano y su funcionamiento",
+            "tipo": "clase",
+            "estado": "programada"
+          }
+        ],
+        "actividades": [
+          {
+            "id": "act-7",
+            "nombre": "Experimento de Fotosíntesis",
+            "fecha": "2024-12-16",
+            "nota": 6.8,
+            "estado": "completada",
+            "tipo": "proyecto",
+            "descripcion": "Observación del proceso de fotosíntesis en plantas acuáticas",
+            "instrucciones": "Realizar experimento con plantas acuáticas y documentar observaciones",
+            "fechaEntrega": "2024-12-16",
+            "peso": 25
+          },
+          {
+            "id": "act-8",
+            "nombre": "Prueba del Sistema Solar",
+            "fecha": "2024-12-24",
+            "nota": null,
+            "estado": "pendiente",
+            "tipo": "prueba",
+            "descripcion": "Evaluación sobre planetas, satélites y características del sistema solar",
+            "contenidos": [
+              "Los ocho planetas del sistema solar",
+              "Características de la Tierra",
+              "Fases de la Luna",
+              "Movimientos de rotación y traslación"
+            ],
+            "instrucciones": "Estudiar material entregado y videos educativos recomendados",
+            "fechaEntrega": "2024-12-24",
+            "peso": 35
+          }
+        ]
+      }
+    ],
+    "ultimaConexion": "2024-12-22T10:30:00Z",
+    "estadoSincronizacion": "sincronizado"
+  }
+]

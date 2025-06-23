@@ -39,7 +39,8 @@ export function StudentDashboard() {
   const pendingActivities = student.materias?.reduce((total, materia) => 
     total + materia.actividades.filter((act: any) => act.estado === 'pendiente').length, 0) || 0;
   const overdueActivities = student.materias?.reduce((total, materia) => 
-    total + materia.actividades.filter((act: any) => act.estado === 'atrasada').length, 0) || 0;  // Obtener actividades recientes ordenadas por prioridad
+    total + materia.actividades.filter((act: any) => act.estado === 'atrasada').length, 0) || 0;
+  // Obtener actividades recientes ordenadas por prioridad
   const recentActivities = getRecentActivities(student.materias || [], 6);
 
   return (

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "titulo": "Tarea de Matemáticas - Suma y Resta",
+    "descripcion": "Resolver ejercicios del cuaderno páginas 25-27",
+    "materia": "Matemáticas",
+    "fechaAsignacion": "2024-12-15T08:00:00Z",
+    "fechaEntrega": "2024-12-18T23:59:00Z",
+    "estado": "entregada",
+    "nota": 6.5,
+    "comentarios": "Buen trabajo, sigue practicando"
+  },
+  {
+    "id": "2",
+    "titulo": "Lectura dirigida - El Principito",
+    "descripcion": "Leer capítulos 1-3 y responder preguntas",
+    "materia": "Lenguaje",
+    "fechaAsignacion": "2024-12-18T08:00:00Z",
+    "fechaEntrega": "2024-12-25T23:59:00Z",
+    "estado": "pendiente",
+    "nota": null,
+    "comentarios": null
+  },
+  {
+    "id": "3",
+    "titulo": "Investigación Pueblos Originarios",
+    "descripcion": "Crear una presentación sobre un pueblo originario de Chile",
+    "materia": "Historia",
+    "fechaAsignacion": "2024-12-16T08:00:00Z",
+    "fechaEntrega": "2024-12-23T23:59:00Z",
+    "estado": "en_revision",
+    "nota": null,
+    "comentarios": "Pendiente de revisión"
+  }
+]

@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Login } from './pages/Login';
-import { AdminDashboard } from './pages/dashboard/AdminDashboard';
-import { TeacherDashboard } from './pages/dashboard/TeacherDashboard';
-import { StudentDashboard } from './pages/dashboard/StudentDashboard';
+import { AdminDashboard } from './pages/dashboard/admin/AdminDashboard';
+import { TeacherDashboard } from './pages/dashboard/teacher/TeacherDashboard';
+import { StudentDashboard } from './pages/dashboard/student/StudentDashboard';
+import { StudentSubjectsPage } from './pages/dashboard/student/StudentSubjectsPage';
 import { RecoverPassword } from './pages/RecoverPassword';
 
 export function Router() {
@@ -14,6 +15,7 @@ export function Router() {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/teacher" element={<TeacherDashboard />} />
         <Route path="/student" element={<StudentDashboard />} />
+        <Route path="/student/subjects" element={<StudentSubjectsPage />} />
       </Routes>
     </BrowserRouter>
   );

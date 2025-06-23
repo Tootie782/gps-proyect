@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "nombre": "Matemáticas",
+    "descripcion": "Operaciones básicas y resolución de problemas",
+    "docente": "María Contreras",
+    "curso": "1°A",
+    "fechaInicio": "2024-03-01",
+    "fechaFin": "2024-12-31",
+    "estado": "activo"
+  },
+  {
+    "id": "2", 
+    "nombre": "Lenguaje y Comunicación",
+    "descripcion": "Comprensión lectora y expresión escrita",
+    "docente": "María Contreras",
+    "curso": "1°A",
+    "fechaInicio": "2024-03-01",
+    "fechaFin": "2024-12-31",
+    "estado": "activo"
+  },
+  {
+    "id": "3",
+    "nombre": "Historia y Geografía",
+    "descripcion": "Historia de Chile y geografía básica",
+    "docente": "Juan Pérez",
+    "curso": "1°A", 
+    "fechaInicio": "2024-03-01",
+    "fechaFin": "2024-12-31",
+    "estado": "activo"
+  }
+]
