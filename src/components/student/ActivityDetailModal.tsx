@@ -101,16 +101,15 @@ export function ActivityDetailModal({ isOpen, activity, subjectName, onClose }: 
           className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300"
           onClick={onClose}
         />
-        
-        {/* Modal */}
-        <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-2xl mx-auto max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-100">          {/* Header */}
-          <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between rounded-t-xl z-10">
-            <div className="flex items-center gap-3">
+          {/* Modal */}
+        <div className="relative bg-white rounded-xl shadow-2xl w-full max-w-3xl mx-auto max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-100">          {/* Header */}
+          <div className="sticky top-0 bg-white border-b border-gray-200 px-8 py-6 flex items-center justify-between rounded-t-xl z-10">
+            <div className="flex items-center gap-4">
               {typeInfo.icon}
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">{activity.nombre}</h2>
+                <h2 className="text-xl font-semibold text-gray-900">{activity.nombre}</h2>
                 {subjectName && (
-                  <p className="text-sm text-gray-600">{subjectName}</p>
+                  <p className="text-sm text-gray-600 mt-1">{subjectName}</p>
                 )}
               </div>
             </div>
@@ -120,36 +119,31 @@ export function ActivityDetailModal({ isOpen, activity, subjectName, onClose }: 
             >
               <X className="w-6 h-6" />
             </button>
-          </div>
-
-          {/* Content */}
-          <div className="p-6 space-y-6">
+          </div>          {/* Content */}
+          <div className="p-8 space-y-6">
             {/* Estado y tipo */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               <span className={`
-                inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium
-                ${typeInfo.bgColor} ${typeInfo.textColor}
+                inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border
+                ${typeInfo.bgColor} ${typeInfo.textColor} ${typeInfo.borderColor}
               `}>
                 {typeInfo.icon}
                 {typeInfo.text}
               </span>
               <span className={`
-                inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium
+                inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border
                 ${statusInfo.bgColor} ${statusInfo.textColor}
               `}>
                 {statusInfo.icon}
                 {statusInfo.text}
-              </span>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-50 text-blue-800">
+              </span>              <span className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-blue-50 text-blue-800 border border-blue-200">
                 Peso: {activity.peso}%
               </span>
-            </div>
-
-            {/* Alerta si está atrasada */}
+            </div>            {/* Alerta si está atrasada */}
             {isOverdue() && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                <div className="flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-red-600" />
+                <div className="flex items-center gap-3">
+                  <AlertTriangle className="w-5 h-5 text-red-600 flex-shrink-0" />
                   <span className="text-sm font-medium text-red-800">
                     Esta actividad está atrasada
                   </span>
@@ -158,26 +152,26 @@ export function ActivityDetailModal({ isOpen, activity, subjectName, onClose }: 
             )}
 
             {/* Información de fechas */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {activity.fechaEntrega && (
-                <div className="space-y-1">
+                <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm font-medium text-gray-900">
                     <Calendar className="w-4 h-4" />
                     Fecha de Entrega
                   </div>
-                  <p className="text-sm text-gray-600 capitalize">
+                  <p className="text-base text-gray-700 capitalize bg-gray-50 p-3 rounded-lg">
                     {formatDate(activity.fechaEntrega)}
                   </p>
                 </div>
               )}
               
               {activity.nota !== null && (
-                <div className="space-y-1">
+                <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm font-medium text-gray-900">
                     <Target className="w-4 h-4" />
                     Calificación
                   </div>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-base text-gray-700 bg-gray-50 p-3 rounded-lg">
                     {activity.nota.toFixed(1)}
                   </p>
                 </div>

@@ -1,97 +1,151 @@
 import { AppShell } from '../../../components/AppShell';
-import { useNavigate } from 'react-router-dom';
-import { Building, Mic, GraduationCap, FileText } from 'lucide-react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Building, Users, GraduationCap, BookOpen, BarChart3 } from 'lucide-react';
 
-// Mock data para simular los datos totales del sistema
-const allSchools = [
-  { id: 1, name: 'Escuela El Roble', city: 'Santiago' },
-  { id: 2, name: 'Liceo Bicentenario', city: 'Valparaíso' },
-  { id: 3, name: 'Colegio Andes', city: 'Concepción' },
-];
+// Mock data para simular los datos de una escuela específica
+const schoolData = {
+  id: 1,
+  name: 'Escuela El Roble',
+  city: 'Santiago',
+  address: 'Av. Principal 123, Santiago',
+  totalStudents: 420,
+  totalTeachers: 28,
+  totalCourses: 15,
+  totalSubjects: 45,
+};
 
-const allTeachers = [
-  { id: 1, name: 'Carlos Fuentes', schoolId: 1 },
-  { id: 2, name: 'Gabriela Mistral', schoolId: 1 },
-  { id: 3, name: 'Pablo Neruda', schoolId: 2 },
-  { id: 4, name: 'Nicanor Parra', schoolId: 2 },
-  { id: 5, name: 'Isabel Allende', schoolId: 3 },
-];
-
-const allStudents = [
-  { id: 1, name: 'Javiera Carrera', schoolId: 1 },
-  { id: 2, name: 'Pedro de Valdivia', schoolId: 1 },
-  { id: 3, name: 'Isabel Riquelme', schoolId: 2 },
-  { id: 4, name: 'Arturo Prat', schoolId: 2 },
-  { id: 5, name: 'Bernardo O\'Higgins', schoolId: 3 },
-  { id: 6, name: 'Violeta Parra', schoolId: 3 },
-  { id: 7, name: 'Salvador Allende', schoolId: 1 },
+const quickStats = [
+  { label: 'Asistencia Promedio', value: '89%', trend: '+2%', color: 'text-green-600' },
+  { label: 'Notas Promedio', value: '6.2', trend: '+0.1', color: 'text-blue-600' },
+  { label: 'Actividades Completadas', value: '78%', trend: '+5%', color: 'text-purple-600' },
+  { label: 'Docentes Activos', value: '26/28', trend: '92%', color: 'text-orange-600' },
 ];
 
 export function AdminDashboard() {
   const navigate = useNavigate();
+  const { schoolId } = useParams();
+  
+  // Si no hay schoolId en la URL, usar el ID por defecto
+  const currentSchoolId = schoolId || '1';
 
-  const handleViewReport = (schoolId) => {
-    navigate(`/admin-regional/reports/${schoolId}`);
+  const handleViewCourses = () => {
+    navigate(`/admin-local/${currentSchoolId}/courses`);
   };
 
-  const stats = [
-    { name: 'Escuelas Totales', value: allSchools.length, icon: Building },
-    { name: 'Docentes Totales', value: allTeachers.length, icon: Mic },
-    { name: 'Estudiantes Totales', value: allStudents.length, icon: GraduationCap },
-  ];
+  const handleViewSubjects = () => {
+    navigate(`/admin-local/${currentSchoolId}/subjects`);
+  };
+
+  const handleViewTeachers = () => {
+    navigate(`/admin-local/${currentSchoolId}/teachers`);
+  };
+  const handleViewStudents = () => {
+    navigate(`/admin-local/${currentSchoolId}/students`);
+  };
 
   return (
-    <AppShell role="admin-regional">
-      <div className="space-y-8">
-        <div>
-          <h1 className="text-2xl font-semibold text-gray-800">Dashboard del Administrador Regional</h1>
-          <p className="text-gray-600 mt-1">Vista general del sistema educativo.</p>
-        </div>
+    <AppShell role="admin-local">
+      <div className="h-full flex flex-col">
+        {/* Header de la escuela */}
+        <div className="flex-shrink-0">
+          <div className="p-4 md:p-6 pb-2 md:pb-4">
+            {/* Info de la escuela */}
+            <div className="flex items-center gap-3 mb-4">
+              <div className="p-2 bg-emerald-100 rounded-lg">
+                <Building className="w-5 h-5 text-emerald-600" />
+              </div>
+              <div>
+                <h1 className="text-lg md:text-xl font-bold text-gray-800">{schoolData.name}</h1>
+                <p className="text-xs md:text-sm text-gray-600">{schoolData.address}</p>
+              </div>
+            </div>
 
-        {/* Stat Cards */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {stats.map((stat) => (
-            <div key={stat.name} className="bg-white overflow-hidden shadow rounded-lg">
-              <div className="p-5">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 bg-blue-500 rounded-md p-3">
-                    <stat.icon className="h-6 w-6 text-white" aria-hidden="true" />
+            {/* Estadísticas principales */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+              <div 
+                className="bg-white rounded-lg border border-gray-200 p-3 md:p-4 cursor-pointer hover:bg-gray-50 transition-colors"
+                onClick={handleViewCourses}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs md:text-sm text-gray-600">Cursos</p>
+                    <p className="text-lg md:text-xl font-bold text-gray-800">{schoolData.totalCourses}</p>
                   </div>
-                  <div className="ml-5 w-0 flex-1">
-                    <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">{stat.name}</dt>
-                      <dd className="text-3xl font-semibold text-gray-900">{stat.value}</dd>
-                    </dl>
+                  <GraduationCap className="w-6 h-6 md:w-8 md:h-8 text-blue-500" />
+                </div>
+              </div>
+
+              <div 
+                className="bg-white rounded-lg border border-gray-200 p-3 md:p-4 cursor-pointer hover:bg-gray-50 transition-colors"
+                onClick={handleViewSubjects}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs md:text-sm text-gray-600">Materias</p>
+                    <p className="text-lg md:text-xl font-bold text-gray-800">{schoolData.totalSubjects}</p>
                   </div>
+                  <BookOpen className="w-6 h-6 md:w-8 md:h-8 text-green-500" />
+                </div>
+              </div>
+
+              <div 
+                className="bg-white rounded-lg border border-gray-200 p-3 md:p-4 cursor-pointer hover:bg-gray-50 transition-colors"
+                onClick={handleViewTeachers}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs md:text-sm text-gray-600">Docentes</p>
+                    <p className="text-lg md:text-xl font-bold text-gray-800">{schoolData.totalTeachers}</p>
+                  </div>
+                  <Users className="w-6 h-6 md:w-8 md:h-8 text-purple-500" />
+                </div>
+              </div>
+
+              <div 
+                className="bg-white rounded-lg border border-gray-200 p-3 md:p-4 cursor-pointer hover:bg-gray-50 transition-colors"
+                onClick={handleViewStudents}
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs md:text-sm text-gray-600">Estudiantes</p>
+                    <p className="text-lg md:text-xl font-bold text-gray-800">{schoolData.totalStudents}</p>
+                  </div>
+                  <GraduationCap className="w-6 h-6 md:w-8 md:h-8 text-orange-500" />
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Reports Section */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">Reportes por Escuela</h2>
-          <div className="space-y-4">
-            {allSchools.map((school) => (
-              <div key={school.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors">
-                <div>
-                  <p className="font-medium text-gray-900">{school.name}</p>
-                  <p className="text-sm text-gray-500">{school.city}</p>
-                </div>
-                <button
-                  onClick={() => handleViewReport(school.id)}
-                  className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-blue-600 bg-white border border-gray-300 rounded-lg hover:bg-blue-50"
-                >
-                  <FileText size={16} />
-                  Ver Reporte
-                </button>
-              </div>
-            ))}
           </div>
         </div>
 
+        {/* Contenido principal con scroll */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="p-4 md:p-6 pt-2 md:pt-4 space-y-6">
+              {/* Estadísticas rápidas */}
+            <div className="bg-white rounded-lg border border-gray-200">
+              <div className="p-4 md:p-6 border-b border-gray-200">
+                <div className="flex items-center gap-2">
+                  <BarChart3 className="w-5 h-5 text-gray-600" />
+                  <h2 className="text-base md:text-lg font-semibold text-gray-800">Resumen Académico</h2>
+                </div>
+              </div>
+
+              <div className="p-4 md:p-6">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {quickStats.map((stat, index) => (
+                    <div key={index} className="text-center">
+                      <p className={`text-xl md:text-2xl font-bold ${stat.color}`}>
+                        {stat.value}
+                      </p>
+                      <p className="text-xs md:text-sm text-gray-600 mt-1">{stat.label}</p>
+                      <p className="text-xs text-green-600 font-medium">{stat.trend}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </AppShell>
-  )
+  );
 }

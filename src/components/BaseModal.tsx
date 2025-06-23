@@ -6,7 +6,7 @@ interface BaseModalProps {
   onClose: () => void;
   title?: string;
   children: React.ReactNode;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full';
   showCloseButton?: boolean;
 }
 
@@ -19,12 +19,15 @@ export function BaseModal({
   showCloseButton = true 
 }: BaseModalProps) {
   if (!open) return null;
-
   const sizeClasses = {
     sm: 'max-w-sm',
     md: 'max-w-md',
     lg: 'max-w-lg',
-    xl: 'max-w-xl'
+    xl: 'max-w-xl',
+    '2xl': 'max-w-2xl',
+    '3xl': 'max-w-3xl',
+    '4xl': 'max-w-4xl',
+    full: 'max-w-full mx-4'
   };
   const modalContent = (
     <div 

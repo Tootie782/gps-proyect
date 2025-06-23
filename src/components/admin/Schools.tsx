@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Plus, Edit, Trash2, MapPin, Phone, Mail, User, Building } from 'lucide-react';
-import { AppShell } from '../../components/AppShell';
+import { AppShell } from '../AppShell';
 import { AddSchoolModal } from './AddSchoolModal';
 
 interface School {

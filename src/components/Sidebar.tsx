@@ -85,20 +85,18 @@ export function Sidebar({
         if (!schoolId) return common; // Evita crash si aún no hay param
         const base = `/admin-local/${schoolId}`;
         return [
-          { icon: <School size={20} />, label: 'Mi Escuela', path: base },
+          { icon: <School size={20} />, label: 'Mi Escuela', path: base },
           { icon: <BookCopy size={20} />, label: 'Cursos', path: `${base}/courses` },
+          { icon: <BookOpenCheck size={20} />, label: 'Materias', path: `${base}/subjects` },
           { icon: <Users size={20} />, label: 'Docentes', path: `${base}/teachers` },
           { icon: <UserCheck size={20} />, label: 'Estudiantes', path: `${base}/students` },
           { icon: <BarChart2 size={20} />, label: 'Reportes', path: `${base}/reports` },
-        ];
-
-      /* Docente */
+        ];      /* Docente */
       case 'teacher':
         return [
           ...common,
-          { icon: <School size={20} />, label: 'Escuelas', path: '/teacher/schools' },
-          { icon: <UserCheck size={20} />, label: 'Estudiantes', path: '/teacher/students' },
-          { icon: <BarChart2 size={20} />, label: 'Reportes', path: '/teacher/reports' },
+          { icon: <BookOpenCheck size={20} />, label: 'Mis Clases', path: '/teacher/classes' },
+          { icon: <BarChart2 size={20} />, label: 'Mis Reportes', path: '/teacher/reports' },
         ];
 
       /* Estudiante */

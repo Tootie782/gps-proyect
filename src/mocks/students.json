@@ -15,7 +15,7 @@
         "asistencia": 92,
         "profesor": "Prof. Ana Morales",
         "aula": "Sala 1",
-        "descripcion": "Desarrollo de habilidades numéricas, resolución de problemas y pensamiento lógico matemático para 5° básico.",        "horario": [
+        "descripcion": "Desarrollo de habilidades numéricas y pensamiento lógico.",        "horario": [
           {
             "id": "mat-1",
             "dia": "lunes",
@@ -67,14 +67,14 @@
             "nota": null,
             "estado": "pendiente",
             "tipo": "prueba",
-            "descripcion": "Evaluación sobre operaciones con números decimales y conversión de fracciones",
+            "descripcion": "Evaluación sobre decimales y fracciones",
             "contenidos": [
               "Lectura y escritura de números decimales",
               "Suma y resta de decimales",
               "Multiplicación de decimales por números naturales",
               "Conversión entre fracciones y decimales"
             ],
-            "instrucciones": "Estudiar capítulos 3 y 4 del libro. Repasar ejercicios de la guía práctica.",
+            "instrucciones": "Estudiar capítulos 3 y 4. Repasar ejercicios de la guía.",
             "fechaEntrega": "2024-12-20",
             "peso": 25
           },
@@ -85,8 +85,8 @@
             "nota": null,
             "estado": "pendiente",
             "tipo": "proyecto",
-            "descripcion": "Medir diferentes elementos de la casa usando unidades de medida estándar",
-            "instrucciones": "Realizar mediciones de al menos 10 objetos diferentes y presentar en una tabla",
+            "descripcion": "Proyecto de medición en el hogar",
+            "instrucciones": "Medir 10 objetos y presentar en tabla",
             "fechaEntrega": "2024-12-25",
             "peso": 20
           }
@@ -98,7 +98,7 @@
         "asistencia": 95,
         "profesor": "Prof. Carlos Ruiz",
         "aula": "Sala 2",
-        "descripcion": "Desarrollo de competencias comunicativas, comprensión lectora y expresión escrita.",        "horario": [
+        "descripcion": "Competencias comunicativas y comprensión lectora.",        "horario": [
           {
             "id": "len-1",
             "dia": "martes",
@@ -138,8 +138,8 @@
             "nota": 7.0,
             "estado": "completada",
             "tipo": "tarea",
-            "descripcion": "Lectura y análisis de fábulas chilenas",
-            "instrucciones": "Leer las fábulas del libro páginas 20-35 y responder preguntas de comprensión",
+            "descripcion": "Análisis de fábulas chilenas",
+            "instrucciones": "Leer páginas 20-35 y responder preguntas",
             "fechaEntrega": "2024-12-14",
             "peso": 15
           },
@@ -150,8 +150,8 @@
             "nota": null,
             "estado": "pendiente",
             "tipo": "tarea",
-            "descripcion": "Redacción de un ensayo descriptivo sobre un elemento de la naturaleza local",
-            "instrucciones": "Escribir un ensayo de 200 palabras describiendo un paisaje o animal de la región",
+            "descripcion": "Ensayo descriptivo sobre la naturaleza",
+            "instrucciones": "Ensayo de 200 palabras sobre paisaje o animal regional",
             "fechaEntrega": "2024-12-21",
             "peso": 20
           },
@@ -162,7 +162,7 @@
             "nota": null,
             "estado": "pendiente",
             "tipo": "prueba",
-            "descripcion": "Evaluación sobre sustantivos, adjetivos y verbos",
+            "descripcion": "Evaluación de gramática básica",
             "contenidos": [
               "Clasificación de sustantivos",
               "Concordancia entre sustantivos y adjetivos",
@@ -181,7 +181,7 @@
         "asistencia": 88,
         "profesor": "Prof. Laura Silva",
         "aula": "Laboratorio",
-        "descripcion": "Exploración del mundo natural a través de experimentos y observación científica.",        "horario": [
+        "descripcion": "Exploración del mundo natural y experimentos.",        "horario": [
           {
             "id": "cie-1",
             "dia": "lunes",
@@ -221,8 +221,8 @@
             "nota": 6.8,
             "estado": "completada",
             "tipo": "proyecto",
-            "descripcion": "Observación del proceso de fotosíntesis en plantas acuáticas",
-            "instrucciones": "Realizar experimento con plantas acuáticas y documentar observaciones",
+            "descripcion": "Experimento de fotosíntesis",
+            "instrucciones": "Experimento con plantas acuáticas y documentar",
             "fechaEntrega": "2024-12-16",
             "peso": 25
           },
@@ -233,14 +233,14 @@
             "nota": null,
             "estado": "pendiente",
             "tipo": "prueba",
-            "descripcion": "Evaluación sobre planetas, satélites y características del sistema solar",
+            "descripcion": "Evaluación del sistema solar",
             "contenidos": [
               "Los ocho planetas del sistema solar",
               "Características de la Tierra",
               "Fases de la Luna",
               "Movimientos de rotación y traslación"
             ],
-            "instrucciones": "Estudiar material entregado y videos educativos recomendados",
+            "instrucciones": "Estudiar material y videos recomendados",
             "fechaEntrega": "2024-12-24",
             "peso": 35
           }
