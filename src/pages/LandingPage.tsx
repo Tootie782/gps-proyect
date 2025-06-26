@@ -106,7 +106,8 @@ export function LandingPage() {
           { index: 1, label: 'Problema' },
           { index: 2, label: 'Solución' },
           { index: 3, label: 'Funcionalidades' },
-          { index: 4, label: 'Prototipo' }
+          { index: 4, label: 'Cronograma' },
+          { index: 5, label: 'Prototipo' }
         ].map((section) => (
           <div key={section.index} className="relative group">
             <button
@@ -418,6 +419,165 @@ export function LandingPage() {
                   <p className="text-gray-600 text-xs sm:text-sm">{feature.desc}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="section h-screen flex flex-col justify-center py-4 lg:py-6 relative mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col">
+          <div className="text-center mb-4 lg:mb-6 flex-shrink-0">
+            <div className="inline-flex items-center space-x-2 bg-purple-50 px-3 py-1.5 rounded-full border border-purple-200 mb-2 lg:mb-3">
+              <Calendar className="w-3 h-3 lg:w-4 lg:h-4 text-purple-600" />
+              <span className="text-purple-700 text-xs lg:text-sm font-medium">Planificación del Proyecto</span>
+            </div>
+
+            <h2 className="text-2xl lg:text-4xl xl:text-5xl font-bold mb-2 lg:mb-3 text-gray-900">
+              <span className="text-purple-600">Cronograma</span> de Desarrollo
+            </h2>
+
+            <p className="text-sm lg:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
+              Conoce las etapas y fechas clave del desarrollo de EduConecta Rural
+            </p>
+            <div className="mt-2 lg:mt-3 flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-6 text-xs lg:text-sm text-gray-500">
+              <span className="font-medium">2,772 horas de esfuerzo</span>
+              <span className="hidden sm:inline">•</span>
+              <span className="font-medium">Presupuesto: $61.507.995 CLP</span>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden flex-1 flex flex-col min-h-0">
+            <div className="overflow-x-auto flex-1">
+              <table className="w-full h-full">
+                <thead className="bg-gradient-to-r from-purple-50 to-blue-50 flex-shrink-0">
+                  <tr>
+                    <th className="px-3 lg:px-4 py-2 lg:py-3 text-left text-xs lg:text-sm font-semibold text-gray-900 uppercase tracking-wider border-b border-gray-200">
+                      Actividad
+                    </th>
+                    <th className="px-3 lg:px-4 py-2 lg:py-3 text-left text-xs lg:text-sm font-semibold text-gray-900 uppercase tracking-wider border-b border-gray-200">
+                      Fecha Estimada
+                    </th>
+                    <th className="px-3 lg:px-4 py-2 lg:py-3 text-left text-xs lg:text-sm font-semibold text-gray-900 uppercase tracking-wider border-b border-gray-200">
+                      Descripción
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200">
+                  {[
+                    {
+                      activity: "Inicio del desarrollo",
+                      date: "17 de junio de 2025 (1 día)",
+                      description: "Inicio de la planificación técnica y configuración base del entorno.",
+                      status: "completed"
+                    },
+                    {
+                      activity: "Diseño de interfaces (UI/UX)",
+                      date: "17 de junio – 30 de junio de 2025 (2 semanas)",
+                      description: "Prototipado de pantallas clave, diseño responsivo y pruebas de usabilidad.",
+                      status: "completed"
+                    },
+                    {
+                      activity: "Desarrollo del backend (APIs, seguridad, roles)",
+                      date: "1 – 21 de julio de 2025 (3 semanas)",
+                      description: "Desarrollo de lógica del sistema, autenticación, y modelos de datos.",
+                      status: "in-progress"
+                    },
+                    {
+                      activity: "Desarrollo del frontend (vistas principales)",
+                      date: "22 de julio – 11 de agosto de 2025 (3 semanas)",
+                      description: "Construcción de vistas: dashboard, fichas, formularios, navegación.",
+                      status: "pending"
+                    },
+                    {
+                      activity: "Implementación de sincronización y soporte offline",
+                      date: "12 – 25 de agosto de 2025 (2 semanas)",
+                      description: "Integración de almacenamiento local y sincronización eficiente.",
+                      status: "pending"
+                    },
+                    {
+                      activity: "Pruebas internas (QA y test de usuario técnico)",
+                      date: "26 de agosto – 5 de septiembre de 2025 (1.5 semanas)",
+                      description: "Pruebas funcionales, validación de requisitos y solución de errores.",
+                      status: "pending"
+                    },
+                    {
+                      activity: "Instalación en escuelas piloto",
+                      date: "8 – 12 de septiembre de 2025 (1 semana)",
+                      description: "Despliegue inicial en escuelas con baja conectividad.",
+                      status: "pending"
+                    },
+                    {
+                      activity: "Prueba en terreno con docentes",
+                      date: "15 – 26 de septiembre de 2025 (2 semanas)",
+                      description: "Evaluación de usabilidad y funcionamiento real con usuarios finales.",
+                      status: "pending"
+                    },
+                    {
+                      activity: "Capacitaciones",
+                      date: "29 de septiembre – 3 de octubre de 2025 (1 semana)",
+                      description: "Talleres presenciales o remotos con docentes y coordinadores.",
+                      status: "pending"
+                    },
+                    {
+                      activity: "Ajustes finales y mejoras",
+                      date: "6 – 17 de octubre de 2025 (2 semanas)",
+                      description: "Implementación de mejoras según retroalimentación real.",
+                      status: "pending"
+                    },
+                    {
+                      activity: "Despliegue general del sistema",
+                      date: "20 de octubre de 2025 (1 día)",
+                      description: "Lanzamiento oficial para el resto de escuelas del proyecto.",
+                      status: "pending"
+                    }
+                  ].map((item, index) => (
+                    <tr key={index} className="hover:bg-gray-50 transition-colors duration-200">
+                      <td className="px-3 lg:px-4 py-1.5 lg:py-2">
+                        <div className="flex items-center space-x-2">
+                          <div className={`w-2 h-2 lg:w-3 lg:h-3 rounded-full flex-shrink-0 ${
+                            item.status === 'completed' ? 'bg-green-500' :
+                            item.status === 'in-progress' ? 'bg-yellow-500' :
+                            'bg-gray-300'
+                          }`} />
+                          <span className="text-xs lg:text-sm font-medium text-gray-900 leading-tight">
+                            {item.activity}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-3 lg:px-4 py-1.5 lg:py-2">
+                        <span className="text-xs lg:text-sm text-gray-600 font-medium leading-tight">
+                          {item.date}
+                        </span>
+                      </td>
+                      <td className="px-3 lg:px-4 py-1.5 lg:py-2">
+                        <span className="text-xs lg:text-sm text-gray-600 leading-tight">
+                          {item.description}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="mt-3 lg:mt-4 text-center flex-shrink-0">
+            <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-3 lg:p-4 border border-purple-200">
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-6">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 bg-green-500 rounded-full" />
+                  <span className="text-xs lg:text-sm text-gray-700 font-medium">Completado</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 bg-yellow-500 rounded-full" />
+                  <span className="text-xs lg:text-sm text-gray-700 font-medium">En Progreso</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2.5 h-2.5 lg:w-3 lg:h-3 bg-gray-300 rounded-full" />
+                  <span className="text-xs lg:text-sm text-gray-700 font-medium">Pendiente</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
