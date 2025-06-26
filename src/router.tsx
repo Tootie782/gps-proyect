@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { LandingPage } from './pages/LandingPage';
 import { Login } from './pages/Login';
 import { RecoverPassword } from './pages/RecoverPassword';
 
@@ -29,7 +30,8 @@ export function Router() {
     <BrowserRouter>
       <Routes>
         {/* Public */}
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/recuperar" element={<RecoverPassword />} />        {/* Admin general - redirige a admin local por defecto */}
         <Route path="/admin" element={<AdminDashboard />} />        {/* Admin Regional (SuperAdmin) */}
         <Route path="/admin-regional" element={<SuperAdminDashboard />} />
