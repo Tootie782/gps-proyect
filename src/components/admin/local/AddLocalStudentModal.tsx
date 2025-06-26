@@ -1,12 +1,24 @@
 import { useState } from 'react';
 
-export function AddLocalStudentModal({ isOpen, onClose, onAdd, courses = [] }) {
+interface Course {
+  id: number;
+  name: string;
+}
+
+interface AddLocalStudentModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onAdd: (name: string, courseIds: number[]) => void;
+  courses?: Course[];
+}
+
+export function AddLocalStudentModal({ isOpen, onClose, onAdd, courses = [] }: AddLocalStudentModalProps) {
   const [name, setName] = useState('');
-  const [selectedCourses, setSelectedCourses] = useState([]);
+  const [selectedCourses, setSelectedCourses] = useState<number[]>([]);
 
   if (!isOpen) return null;
 
-  const handleCourseToggle = (courseId) => {
+  const handleCourseToggle = (courseId: number) => {
     setSelectedCourses(prev =>
       prev.includes(courseId) ? prev.filter(id => id !== courseId) : [...prev, courseId]
     );
@@ -15,6 +27,7 @@ export function AddLocalStudentModal({ isOpen, onClose, onAdd, courses = [] }) {
   const handleSubmit = () => {
     // La funcionalidad no es requerida, solo la UI.
     console.log("Adding student:", name, "to courses:", selectedCourses);
+    onAdd(name, selectedCourses);
     setName('');
     setSelectedCourses([]);
     onClose();

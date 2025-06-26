@@ -38,7 +38,7 @@ export function SchoolTeachers() {
   const { schoolId } = useParams();
   const adminSchoolId = schoolId ? parseInt(schoolId, 10) : 0;
   
-  const [teachers, setTeachers] = useState(() => allTeachers.filter(t => t.schoolId === adminSchoolId));
+  const teachers = allTeachers.filter(t => t.schoolId === adminSchoolId);
   const schoolCourses = mockCourses.filter(c => c.schoolId === adminSchoolId);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isAssignModalOpen, setIsAssignModalOpen] = useState(false);

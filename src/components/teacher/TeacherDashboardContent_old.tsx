@@ -2,18 +2,8 @@ import { useState } from 'react';
 import { TeacherHeader } from './TeacherHeader';
 import { TeacherStats } from './TeacherStats';
 import { TeacherAlerts } from './TeacherAlerts';
-import { WeeklySchedule } from '../student/WeeklySchedule';                    <div className="flex items-center justify-between p-4 border-b border-gray-200 flex-shrink-0">
-                      <h3 className="text-sm font-semibold text-gray-900">Mis Actividades</h3>
-                      <button 
-                        onClick={handleNewActivity}
-                        className="flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-md transition-colors"
-                      >
-                        <Plus className="w-3 h-3" />
-                        Nueva
-                      </button>
-                    </div> { StudentRecentActivities } from '../student/StudentRecentActivities';
-import { ClassDetailModal } from './ClassDetailModal';
-import { NewActivityModal } from './NewActivityModal';
+import { WeeklySchedule } from '../student/WeeklySchedule';
+import { StudentRecentActivities } from '../student/StudentRecentActivities';
 import { Calendar, Activity as ActivityIcon, Plus } from 'lucide-react';
 import type { Teacher, TeacherClass, TeacherActivity } from '../../types/teacher';
 import type { Subject, ClassSchedule, Activity } from '../../types/student';
@@ -28,25 +18,16 @@ interface TeacherDashboardContentProps {
 export function TeacherDashboardContent({
   teacher,
   upcomingClasses,
-  pendingGrades,
-  recentActivities
+  pendingGrades
 }: TeacherDashboardContentProps) {
   // Estado para tabs en mobile
   const [activeTab, setActiveTab] = useState<'schedule' | 'activities'>('schedule');
-  
-  // Estado para modales
-  const [selectedClass, setSelectedClass] = useState<{
-    classItem: ClassSchedule;
-    subject: Subject;
-  } | null>(null);
-  const [showNewActivityModal, setShowNewActivityModal] = useState(false);
 
   // Convertir datos del profesor al formato que esperan los componentes de estudiantes
   const convertToSubjectFormat = (): Subject[] => {
     const schoolsMap = new Map<string, Subject>();
 
     teacher.horarioSemanal.forEach(clase => {
-      const schoolData = teacher.escuelas.find(esc => esc.nombre === clase.escuela);
       const key = `${clase.escuela}-${clase.curso}`;
 
       if (!schoolsMap.has(key)) {
@@ -114,43 +95,14 @@ export function TeacherDashboardContent({
   const studentFormatActivities = convertActivitiesToStudentFormat();
   // Handler para cuando se hace click en una clase del horario
   const handleClassClick = (classItem: ClassSchedule, subject: Subject) => {
-    setSelectedClass({ classItem, subject });
+    console.log('Clase seleccionada:', classItem, subject);
+    // Aquí se podría abrir un modal con detalles de la clase
   };
 
   // Handler para cuando se hace click en una actividad
   const handleActivityClick = (activity: Activity, subject: string) => {
     console.log('Actividad seleccionada:', activity, subject);
     // Aquí se podría abrir un modal para editar la actividad
-  };
-
-  // Handler para crear nueva actividad
-  const handleNewActivity = () => {
-    setShowNewActivityModal(true);
-  };
-
-  // Handler para guardar actividad
-  const handleSaveActivity = (activityData: any) => {
-    console.log('Nueva actividad:', activityData);
-    // Aquí se implementaría la lógica para guardar la actividad
-    setShowNewActivityModal(false);
-  };
-
-  // Handler para guardar cambios en clase
-  const handleSaveClass = (updatedClass: any) => {
-    console.log('Clase actualizada:', updatedClass);
-    // Aquí se implementaría la lógica para actualizar la clase
-    setSelectedClass(null);
-  };
-
-  // Obtener lista de cursos para el modal de nueva actividad
-  const getCoursesList = () => {
-    const courses: Array<{ escuela: string; curso: string }> = [];
-    teacher.escuelas.forEach(escuela => {
-      escuela.cursos.forEach(curso => {
-        courses.push({ escuela: escuela.nombre, curso });
-      });
-    });
-    return courses;
   };
 
   return (
