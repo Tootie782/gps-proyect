@@ -105,7 +105,6 @@ export function Sidebar({
           ...common,
           /* En develop ya existe la vista de materias → conservamos /student/subjects */
           { icon: <BookOpenCheck size={20} />, label: 'Mis Materias', path: '/student/subjects' },
-          { icon: <BarChart2 size={20} />, label: 'Reportes', path: '/student/reports' },
         ];
 
       default:

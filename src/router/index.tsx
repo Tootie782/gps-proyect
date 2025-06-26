@@ -4,15 +4,15 @@ import { AdminDashboard } from '../pages/dashboard/admin/AdminDashboard';
 import { TeacherDashboard } from '../pages/dashboard/teacher/TeacherDashboard';
 import { StudentDashboard } from '../pages/dashboard/student/StudentDashboard';
 import { RecoverPassword } from '../pages/RecoverPassword';
-import { Schools } from '../pages/admin/Schools';
-import { Teachers } from '../pages/admin/Teachers';
-import { Students } from '../pages/admin/Students';
-import { MySchool } from '../pages/admin/MySchool';
-import { Courses } from '../pages/admin/Courses';
-import { SchoolTeachers } from '../pages/admin/local/SchoolTeachers';
-import { SchoolStudents } from '../pages/admin/local/SchoolStudents';
-import { Reports } from '../pages/admin/Reports';
-import { RegionalSchoolReport } from '../pages/admin/RegionalSchoolReport';
+import { Schools } from '../components/admin/Schools';
+import { Teachers } from '../components/admin/Teachers';
+import { Students } from '../components/admin/Students';
+import { MySchool } from '../components/admin/MySchool';
+import { Courses } from '../components/admin/Courses';
+import { SchoolTeachers } from '../components/admin/local/SchoolTeachers';
+import { SchoolStudents } from '../components/admin/local/SchoolStudents';
+import { Reports } from '../components/admin/Reports';
+import { RegionalSchoolReport } from '../components/admin/RegionalSchoolReport';
 
 export function Router() {
   return (

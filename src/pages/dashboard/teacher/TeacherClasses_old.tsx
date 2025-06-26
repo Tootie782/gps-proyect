@@ -3,12 +3,14 @@ import { AppShell } from '../../../components/AppShell';
 import { useTeachers } from '../../../hooks/useTeachers';
 import { School, Clock, MapPin, Users, Calendar, Plus } from 'lucide-react';
 import { WeeklySchedule } from '../../../components/student/WeeklySchedule';
-import type { Subject, ClassSchedule } from '../../../types/student';
+import type { Subject } from '../../../types/student';
 
 export function TeacherClasses() {
   const { loading, getTeacherById } = useTeachers();
   const [selectedTeacher] = useState<string>('1');
   const [selectedSchool, setSelectedSchool] = useState<number | 'all'>('all');
+
+  const daysOfWeek = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes'];
   
   const teacher = getTeacherById(selectedTeacher);
 
@@ -91,12 +93,6 @@ export function TeacherClasses() {
   };
 
   const subjects = convertToSubjectFormat();
-
-  // Handler para cuando se hace click en una clase del horario
-  const handleClassClick = (classItem: ClassSchedule, subject: Subject) => {
-    console.log('Clase seleccionada:', classItem, subject);
-    // Aquí se podría abrir un modal con detalles de la clase
-  };
 
   return (
     <AppShell role='teacher'>
