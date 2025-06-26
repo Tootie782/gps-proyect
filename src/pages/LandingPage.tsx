@@ -129,7 +129,7 @@ export function LandingPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="section h-screen flex items-center justify-center relative overflow-hidden mb-8">
+      <section className="section min-h-screen lg:h-screen flex items-center justify-center relative overflow-hidden mb-8">
         <div className="absolute inset-0 bg-gradient-to-r from-gray-50/80 to-transparent z-10" />
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-emerald-500/40 rounded-full blur-3xl animate-pulse" />
@@ -174,7 +174,7 @@ export function LandingPage() {
       </section>
 
       {/* Problem Section */}
-      <section className="section h-screen flex items-center py-12 sm:py-16 lg:py-8 relative mb-8">
+      <section className="section min-h-screen lg:h-screen flex items-center py-12 sm:py-16 lg:py-8 relative mb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             <div className="space-y-4 sm:space-y-6 lg:space-y-8">
@@ -241,7 +241,7 @@ export function LandingPage() {
       </section>
 
       {/* Solution Section */}
-      <section className="section h-screen flex items-center py-12 sm:py-16 lg:py-8 relative mb-8">
+      <section className="section min-h-screen lg:h-screen flex items-center py-12 sm:py-16 lg:py-8 relative mb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <div className="inline-flex items-center space-x-2 bg-emerald-50 px-3 sm:px-4 py-2 rounded-full border border-emerald-200 mb-4 sm:mb-6">
@@ -337,7 +337,7 @@ export function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="section h-screen flex flex-col justify-center py-12 sm:py-16 lg:py-8 relative mb-8">
+      <section className="section min-h-screen lg:h-screen flex flex-col justify-center py-12 sm:py-16 lg:py-8 relative mb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="text-center mb-6 sm:mb-8 lg:mb-10">
             <div className="inline-flex items-center space-x-2 bg-blue-50 px-3 sm:px-4 py-2 rounded-full border border-blue-200 mb-3 sm:mb-4">
@@ -425,9 +425,9 @@ export function LandingPage() {
       </section>
 
       {/* Timeline Section */}
-      <section className="section h-screen flex flex-col justify-center py-4 lg:py-6 relative mb-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col">
-          <div className="text-center mb-4 lg:mb-6 flex-shrink-0">
+      <section className="section min-h-screen lg:h-screen flex flex-col justify-center py-8 sm:py-12 lg:py-6 relative mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full lg:h-full flex flex-col">
+          <div className="text-center mb-6 sm:mb-8 lg:mb-6 flex-shrink-0">
             <div className="inline-flex items-center space-x-2 bg-purple-50 px-3 py-1.5 rounded-full border border-purple-200 mb-2 lg:mb-3">
               <Calendar className="w-3 h-3 lg:w-4 lg:h-4 text-purple-600" />
               <span className="text-purple-700 text-xs lg:text-sm font-medium">Planificación del Proyecto</span>
@@ -447,8 +447,8 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden flex-1 flex flex-col min-h-0">
-            <div className="overflow-x-auto flex-1">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden lg:flex-1 flex flex-col lg:min-h-0">
+            <div className="overflow-x-auto lg:flex-1">
               <table className="w-full h-full">
                 <thead className="bg-gradient-to-r from-purple-50 to-blue-50 flex-shrink-0">
                   <tr>
@@ -584,7 +584,7 @@ export function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="section h-screen flex items-center py-12 sm:py-16 lg:py-8 relative">
+      <section className="section min-h-screen lg:h-screen flex items-center py-12 sm:py-16 lg:py-8 relative">
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/50 to-blue-50/50" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-6 sm:mb-8 lg:mb-12">
