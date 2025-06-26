@@ -1,0 +1,144 @@
+[
+  {
+    "id": "1",
+    "name": "Prof. Ana Morales",
+    "rut": "15.432.876-5",
+    "email": "ana.morales@escuela.cl",
+    "telefono": "+56 9 8765 4321",
+    "materia": "Matemáticas",
+    "experiencia": 8,
+    "especialidad": "Educación Matemática",
+    "titulo": "Profesora de Matemáticas",
+    "escuelas": [
+      {
+        "id": 1,
+        "nombre": "Escuela El Roble",
+        "ciudad": "Temuco",
+        "cursos": ["5°A", "6°A", "6°B"]
+      },
+      {
+        "id": 3,
+        "nombre": "Colegio Lagos del Sur", 
+        "ciudad": "Pucón",
+        "cursos": ["4°A", "5°A"]
+      }
+    ],
+    "horarioSemanal": [
+      {
+        "id": "clase-1",
+        "dia": "lunes",
+        "horaInicio": "08:30",
+        "horaFin": "10:00",
+        "escuela": "Escuela El Roble",
+        "curso": "5°A",
+        "tema": "Números y Operaciones",
+        "aula": "Sala 1",
+        "estado": "programada"
+      },
+      {
+        "id": "clase-2", 
+        "dia": "lunes",
+        "horaInicio": "10:30",
+        "horaFin": "12:00",
+        "escuela": "Escuela El Roble",
+        "curso": "6°A", 
+        "tema": "Fracciones",
+        "aula": "Sala 2",
+        "estado": "programada"
+      },
+      {
+        "id": "clase-3",
+        "dia": "martes",
+        "horaInicio": "14:00",
+        "horaFin": "15:30",
+        "escuela": "Colegio Lagos del Sur",
+        "curso": "4°A",
+        "tema": "Geometría Básica",
+        "aula": "Sala 3",
+        "estado": "programada"
+      },
+      {
+        "id": "clase-4",
+        "dia": "miercoles",
+        "horaInicio": "08:30",
+        "horaFin": "10:00", 
+        "escuela": "Escuela El Roble",
+        "curso": "6°B",
+        "tema": "Resolución de Problemas",
+        "aula": "Sala 1",
+        "estado": "programada"
+      },
+      {
+        "id": "clase-5",
+        "dia": "jueves",
+        "horaInicio": "10:30",
+        "horaFin": "12:00",
+        "escuela": "Colegio Lagos del Sur", 
+        "curso": "5°A",
+        "tema": "Números Decimales",
+        "aula": "Sala 2",
+        "estado": "programada"
+      },
+      {
+        "id": "clase-6",
+        "dia": "viernes",
+        "horaInicio": "08:30",
+        "horaFin": "10:00",
+        "escuela": "Escuela El Roble",
+        "curso": "5°A",
+        "tema": "Evaluación Semanal",
+        "aula": "Sala 1",
+        "estado": "programada"
+      }
+    ],
+    "actividades": [
+      {
+        "id": "act-1",
+        "titulo": "Ejercicios de Fracciones",
+        "descripcion": "Resolución de problemas con fracciones simples",
+        "curso": "5°A",
+        "escuela": "Escuela El Roble",
+        "fechaVencimiento": "2025-06-25",
+        "estado": "activa",
+        "tipo": "tarea",
+        "calificaciones": [
+          {"estudiante": "María González", "nota": 6.5, "entregado": true},
+          {"estudiante": "Pedro Silva", "nota": 5.8, "entregado": true},
+          {"estudiante": "Ana Torres", "nota": null, "entregado": false}
+        ]
+      },
+      {
+        "id": "act-2",
+        "titulo": "Prueba de Geometría",
+        "descripcion": "Evaluación de conceptos de perímetro y área",
+        "curso": "6°A",
+        "escuela": "Escuela El Roble", 
+        "fechaVencimiento": "2025-06-28",
+        "estado": "programada",
+        "tipo": "evaluacion",
+        "calificaciones": []
+      },
+      {
+        "id": "act-3",
+        "titulo": "Proyecto Final",
+        "descripcion": "Aplicación de matemáticas en la vida cotidiana",
+        "curso": "4°A",
+        "escuela": "Colegio Lagos del Sur",
+        "fechaVencimiento": "2025-07-05",
+        "estado": "activa", 
+        "tipo": "proyecto",
+        "calificaciones": [
+          {"estudiante": "Luis Morales", "nota": 6.8, "entregado": true},
+          {"estudiante": "Carmen Ruiz", "nota": 6.2, "entregado": true}
+        ]
+      }
+    ],
+    "estadisticas": {
+      "totalEstudiantes": 95,
+      "promedioGeneral": 6.1,
+      "asistenciaPromedio": 87,
+      "actividadesPendientes": 8,
+      "evaluacionesPorCalificar": 12
+    }
+  }
+]
